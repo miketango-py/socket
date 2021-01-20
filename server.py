@@ -4,7 +4,7 @@
 import socket
 #variables
 HOST = '127.0.0.1'  # Indirizzo dell'interfaccia standard di loopback (localhost)
-PORT = 65432        # Porta di ascolto, la lista di quelle utilizzabili parte da >1023)
+PORT = 65433       # Porta di ascolto, la lista di quelle utilizzabili parte da >1023)
 s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #code
 # Optionale: permette di riavviare subito il codice,
