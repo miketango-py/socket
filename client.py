@@ -2,12 +2,20 @@
 #import -- from
 import socket
 #variables
-HOST = '127.0.0.1'  # The server's hostname or IP address
-PORT = 65432        # The port used by the server
+SERVER_ADDRESS = '127.0.0.1'  # The server's hostname or IP address
+SERVER_PORT = 65433        # The port used by the server
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #code
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:#start with
-    s.connect((HOST, PORT))#connect to the host
-    s.sendall(b'Socket connection successful!')#sending the msg (coded in byte (b))
-    data = s.recv(1024)#listening for the answer
-#end with
-print(data.decode())#printing the recieved message
+s.connect((SERVER_ADDRESS, SERVER_PORT))
+dati = input("Insert the message for the server: ")
+dati = dati.encode()
+# Send data to server
+s.send(dati)
+# Receive response from server
+dati = s.recv(2048)
+if dati:#start if
+    # Convert back to string for python3
+    dati = dati.decode()
+    print("I received from the server: ")
+    print(dati + '\n')
+#end if
