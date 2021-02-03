@@ -31,8 +31,8 @@ while True:
         separator = data.split(';')
         if separator[0] == "piu":
             ris = (float(separator[1]) + float(separator[2]))
-
-        data = "Answer to: " + str(addr_client) + ".\n The result between " + separator[1] + " and " + separator[2] + " with the " + separator[0] + " is: " + str(ris)
+            break
+        data = "Answer to: " + str(addr_client) + ".\n The result between " + str(separator[1]) + " and " + str(separator[2]) + " with the " + str(separator[0]) + " is: " + str(ris)
         data = data.encode()
         sock_service.send(data)
 
