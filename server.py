@@ -17,17 +17,17 @@ clientsocket, address = s.accept()
 with clientsocket as cs:#start with
     print('Connection from', address)
     while True:#start while
-        dati = cs.recv(1024)
-        dati.decode()
-        if not dati:#start if
+        data = cs.recv(1024)
+        data.decode()
+        if not data:#start if
             break
         #end if
-        dati = dati.decode()
-        print("Riceived '%s' from client" % dati)
-        dati = "Hi, " + str(address) + ". I received this: '" + dati + "'"
-        dati = dati.encode()
+        data = data.decode()
+        print("Riceived ' %s ' from client" % data)
+        data = "Hi, " + str(address) + ". I received this: '" + data + "'"
+        data = data.encode()
         # Invia i dati modificati al client
-        cs.send(dati)
-        print('Send to the client:', dati)
+        cs.send(data)
+        print('Send to the client:', data)
     #end while
 #end with

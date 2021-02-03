@@ -7,15 +7,15 @@ SERVER_PORT = 65433        # The port used by the server
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #code
 s.connect((SERVER_ADDRESS, SERVER_PORT))
-dati = input("Insert the message for the server: ")
-dati = dati.encode()
+data = input("Insert the message for the server: ")
+data = data.encode()
 # Send data to server
-s.send(dati)
+s.send(data)
 # Receive response from server
-dati = s.recv(2048)
-if dati:#start if
+data = s.recv(2048)
+if data:#start if
     # Convert back to string for python3
-    dati = dati.decode()
+    data = data.decode()
     print("I received from the server: ")
-    print(dati + '\n')
+    print(data + '\n')
 #end if
