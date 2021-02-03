@@ -14,10 +14,8 @@ while True:
     sock_service, addr_client = sock_listen.accept()
     print("\nConnection received from " + str(addr_client))
     print("\nWaiting for receive data ")
-    contConn=0
     while True:
         data = sock_service.recv(2048)
-        contConn+=1
         if not data:
             print("End data client. Reset")
             break
