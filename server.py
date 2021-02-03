@@ -38,9 +38,12 @@ while True:
         if separator[0] == "per":
             ris = (float(separator[1]) * float(separator[2]))
 
-        if separator[0] == "divisione":
-            if separator[2] == 0:
-                ris = "Is not possible to divide for '0'"
+        if separator[0] == "diviso":
+            if separator[2] == '0':
+                ris = str(separator[1]) + " / " + str(separator[2]) +  " is not possible"
+                data = "Answer to: " + str(addr_client) + ".\n" + str(ris)
+                data = data.encode()
+                sock_service.send(data)
             else:
                 ris = (float(separator[1]) / float(separator[2]))
 
