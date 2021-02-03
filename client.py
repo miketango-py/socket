@@ -17,7 +17,7 @@ while True:
     if not data:
         print("You can't send an empty string!")
         continue
-    if data == '0':
+    if data == 'E' or data == 'e':
         print("Closing the connection to the server!")
         break
 
@@ -25,11 +25,11 @@ while True:
     sock_service.send(data)
     data = sock_service.recv(2048)
     if not data:
-        print("Server does not respond. Exiting")
+        print("Server does not respond. Exited")
         break
 
     data = data.decode()
-    print("Receivend from the server:")
+    print("Received from the server:")
     print(data + '\n')
 
 sock_service.close()

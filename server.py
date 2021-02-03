@@ -16,20 +16,24 @@ while True:
     print("\nWaiting for receive data ")
     contConn=0
     while True:
-        dati = sock_service.recv(2048)
+        data = sock_service.recv(2048)
         contConn+=1
-        if not dati:
+        if not data:
             print("End data client. Reset")
             break
         
-        dati = dati.decode()
-        print("Received: '%s'" % dati)
-        if dati=='0':
+        data = data.decode()
+        print("Received: '%s'" % data)
+        if data=='0':
             print("Closing connection with: " + str(addr_client))
             break
 
-        dati = "Answer to: " + str(addr_client) + ". The value of the counter is: " + str(contConn)
-        dati = dati.encode()
-        sock_service.send(dati)
+        separator = data.split(';')
+        if separator[0] == "piu":
+            ris = (float(separator[1]) + float(separator[2]))
+
+        data = "Answer to: " + str(addr_client) + ".\n The result between " + separator[1] + " and " + separator[2] + " with the " + separator[0] + " is: " + str(ris)
+        data = data.encode()
+        sock_service.send(data)
 
     sock_service.close()
