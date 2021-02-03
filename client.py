@@ -10,7 +10,7 @@ sock_service.connect((SERVER_ADDRESS, SERVER_PORT))
 print("Connected to: " + str((SERVER_ADDRESS, SERVER_PORT)))
 while True:
     try:
-        data = input("Insert operator, number one and number two to send (separated by a semicolon; 'E' per terminare la connessione): ")
+        data = input("Insert operator, number one and number two to send (separated by a semicolon; 'E' for close the connection): ")
     except EOFError:
         print("\nOkay. Exit")
         break
