@@ -20,22 +20,22 @@ print("Server in ascolto su %s." % str((SERVER_ADDRESS, SERVER_PORT)))
 
 while True:
     sock_service, addr_client = sock_listen.accept()
-    print("\nConnessione ricevuta da " + str(addr_client))
-    print("\nAspetto di ricevere i dati ")
+    print("\nConnection recieved from " + str(addr_client))
+    print("\nWaiting for recieving data ")
     contConn=0
     while True:
         dati = sock_service.recv(2048)
         contConn+=1
         if not dati:
-            print("Fine dati dal client. Reset")
+            print("End data client. Reset")
             break
         
         dati = dati.decode()
-        print("Ricevuto: '%s'" % dati)
+        print("Ricieved: '%s'" % dati)
         if dati=='0':
-            print("Chiudo la connessione con " + str(addr_client))
+            print("Closing the connection with " + str(addr_client))
             break
-        dati = "Risposta a : " + str(addr_client) + ". Il valore del contatore è : " + str(contConn)
+        dati = "Answer to : " + str(addr_client) + ". The value of the counter is: " + str(contConn)
 
         dati = dati.encode()
 
