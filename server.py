@@ -1,44 +1,35 @@
 #!/usr/bin/env python3
+#from -- import
 import socket
-
-
-
+#variables
 SERVER_ADDRESS = '127.0.0.1'
-
 SERVER_PORT = 22224
-
 sock_listen = socket.socket()
-
+#code
 sock_listen.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
 sock_listen.bind((SERVER_ADDRESS, SERVER_PORT))
-
 sock_listen.listen(5)
-
-print("Server in ascolto su %s." % str((SERVER_ADDRESS, SERVER_PORT)))
-
-
+print("Server listening on: %s" % str((SERVER_ADDRESS, SERVER_PORT)))
 while True:
     sock_service, addr_client = sock_listen.accept()
-    print("\nConnessione ricevuta da " + str(addr_client))
-    print("\nAspetto di ricevere i dati ")
+    print("\nConnection received from " + str(addr_client))
+    print("\nWaiting for receive data ")
     contConn=0
     while True:
         dati = sock_service.recv(2048)
         contConn+=1
         if not dati:
-            print("Fine dati dal client. Reset")
+            print("End data client. Reset")
             break
         
         dati = dati.decode()
-        print("Ricevuto: '%s'" % dati)
+        print("Received: '%s'" % dati)
         if dati=='0':
-            print("Chiudo la connessione con " + str(addr_client))
+            print("Closing connection with: " + str(addr_client))
             break
-        dati = "Risposta a : " + str(addr_client) + ". Il valore del contatore è : " + str(contConn)
 
+        dati = "Answer to: " + str(addr_client) + ". The value of the counter is: " + str(contConn)
         dati = dati.encode()
-
         sock_service.send(dati)
 
     sock_service.close()
