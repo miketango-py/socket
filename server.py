@@ -63,6 +63,6 @@ socket_listen(sock_listen, SERVER_ADDRESS, SERVER_PORT)#calling the function soc
 while True:#start while
     sock_service, addr_client = sock_listen.accept()
     connected(addr_client)#calling the function connected
-    operation()  
+    operation()#calling the function operator
     sock_service.close()
 #end while
