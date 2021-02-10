@@ -10,7 +10,7 @@ def socket_connect (sock_service, SERVER_ADDRESS, SERVER_PORT):#start socket_con
     #variables
     #code
     sock_service.connect((SERVER_ADDRESS, SERVER_PORT))
-    print("Connected to: " + str((SERVER_ADDRESS, SERVER_PORT)))#printing the info of the server 
+    print("Connected to: " + str((SERVER_ADDRESS, SERVER_PORT)))#printing the info of the connection
 #end socket_connect
 def input_data():#start input_data
     #variables
