@@ -17,7 +17,7 @@ def socket_listen(sock_listen, SERVER_ADDRESS, SERVER_PORT):#start socket_listen
 def connected (addr_client):#start connected
     #variables
     #code
-    print("\nConnection received from " + str(addr_client))#printing that the connection is ok
+    print("\nConnection received from " + str(addr_client))#printing that the connection is ok with the connection info
     print("\nWaiting for receive data ")
 #end connected
 def operation ():#start operation
