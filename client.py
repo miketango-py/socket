@@ -17,7 +17,7 @@ def input_data():#start input_data
     #code
     while True:#start while
         try:#input of the operation
-            data = input("Insert operator, number one and number two to send (separated by a semicolon; 'E' for close the connection): ")
+            data = input("Insert operator, number one and number two to send (separated by a semicolon; 'E' or 'e' for close the connection): ")
         except EOFError:
             print("\nOkay. Exit")
             break
