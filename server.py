@@ -14,12 +14,15 @@ def socket_listen(sock_listen, SERVER_ADDRESS, SERVER_PORT):#start socket_listen
     sock_listen.listen(5)
     print("Server listening on: %s" % str((SERVER_ADDRESS, SERVER_PORT)))#taking and printing the info on the server
 #end socket_listen
-#code
-socket_listen(sock_listen, SERVER_ADDRESS, SERVER_PORT)#calling the function socket_listen
-while True:#start while
-    sock_service, addr_client = sock_listen.accept()
-    print("\nConnection received from " + str(addr_client))
+def connected (addr_client):#start connected
+    #variables
+    #code
+    print("\nConnection received from " + str(addr_client))#printing that the connection is ok
     print("\nWaiting for receive data ")
+#end connected
+def operation ():#start operation
+    #variables
+    #code
     while True:#start while
         data = sock_service.recv(2048)
         if not data:#start if; control if the data is received or not
@@ -53,7 +56,13 @@ while True:#start while
         data = "Answer to: " + str(addr_client) + ".\n The result between " + str(separator[1]) + " and " + str(separator[2]) + " with the " + str(separator[0]) + " is: " + str(ris)
         data = data.encode()#encoding the data with the result
         sock_service.send(data)#sending the incoding data to the server
-    #end while    
+    #end while
+#end operation
+#code
+socket_listen(sock_listen, SERVER_ADDRESS, SERVER_PORT)#calling the function socket_listen
+while True:#start while
+    sock_service, addr_client = sock_listen.accept()
+    connected(addr_client)#calling the function connected
+    operation()  
     sock_service.close()
 #end while
-    
