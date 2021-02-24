@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 #from -- import
-import socket
+import socket, sys, random, os, time
+import threading, multiprocessing
 #variables
 SERVER_ADDRESS = '127.0.0.1'
 SERVER_PORT = 22224
 sock_service = socket.socket()
+NUM_WORKERS = 15#numbers of threads generated automatically by the client
 #functions
-def socket_connect (sock_service, SERVER_ADDRESS, SERVER_PORT):#start socket_connect
+def generate_requests (sock_service, SERVER_ADDRESS, SERVER_PORT):#start  generate_requests
     #variables
     #code
     sock_service.connect((SERVER_ADDRESS, SERVER_PORT))
     print("Connected to: " + str((SERVER_ADDRESS, SERVER_PORT)))#printing the info of the connection
-#end socket_connect
+#end generate_requests
 def input_data():#start input_data
     #variables
     #code
@@ -42,6 +44,6 @@ def input_data():#start input_data
     #end while
 #end input_data
 #code
-socket_connect(sock_service, SERVER_ADDRESS, SERVER_PORT)#calling the function socket_connect
+generate_requests(sock_service, SERVER_ADDRESS, SERVER_PORT)#calling the function socket_connect
 input_data()#calling the function input_data
 sock_service.close()
