@@ -60,8 +60,8 @@ if __name__ == '__main__':#start if
     #run tasks using processes
     start_time = time.time()#taking the start time of the process
     processes = [multiprocessing.Process(target = generate_requests, args = (SERVER_ADDRESS, SERVER_PORT))for _ in range(NUM_WORKERS)]
-    [process.start() for process in processes]
-    [process.join() for process in processes]
+    [process.start() for process in processes]#starting the processes
+    [process.join() for process in processes]#let the process wait  
     end_time = time.time()#taking the end time of the process
     print("{process_name} Execution time: {exe_time}"
             .format(process_name = multiprocessing.current_process().name,#getting the name of the process

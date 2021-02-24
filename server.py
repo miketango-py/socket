@@ -27,11 +27,14 @@ def operation (sock_service, addr_client):#start operation
     #code
     while True:#start while
         data = sock_service.recv(2048)
+        data = data.decode()
         if not data:#start if; control if the data is received or not
             print("End data client. Reset")
             break
+        elif data == "E":#exiting case
+            print("Exiting...")
+            break
         #end if
-        data = data.decode()#decoding the data received
         print("\nReceived from " +  str(addr_client) + ": '%s'" %data)
         if data=='0':#start if; control data input, if 0 -> closing connection
             print("Closing connection with: " + str(addr_client))
@@ -59,6 +62,7 @@ def operation (sock_service, addr_client):#start operation
         data = data.encode()#encoding the data with the result
         sock_service.send(data)#sending the incoding data to the server
     #end while
+    sock_service.close()
 #end operation
 def receiving_connections(sock_listen):#start receiving_connections
     #variables
