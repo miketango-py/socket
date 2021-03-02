@@ -3,7 +3,7 @@
 import socket
 from threading import Thread
 #variables
-SERVER_ADDRESS = '127.0.0.1'
+SERVER_ADDRESS = '192.168.9.23'
 SERVER_PORT = 22224
 sock_listen = socket.socket()
 #functions

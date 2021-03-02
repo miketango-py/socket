@@ -3,7 +3,7 @@
 import socket, sys, random, os, time
 import threading, multiprocessing
 #variables
-SERVER_ADDRESS = '127.0.0.1'
+SERVER_ADDRESS = '192.168.9.23'
 SERVER_PORT = 22224
 NUM_WORKERS = 15#numbers of threads generated automatically by the client
 #functions
@@ -23,12 +23,12 @@ def generate_requests (SERVER_ADDRESS, SERVER_PORT):#start  generate_requests
                 .format(thread_name = threading.current_thread().name,#getting the name of the thread
                 server_address = SERVER_ADDRESS,#getting the server address
                 server_port = SERVER_PORT)#getting the server port
-        )
+                )
     except sock_service.error as socket_service_error:#error case
         print("{thread_name} Something gone wrong -> Error: {socket_service_error}"#printing an error output
                 .format(thread_name = threading.current_thread().name,#getting the thread name
                 socket_service_error = socket_service_error)#insert the socket service error
-        )
+                )
         print("\nExiting...")
         sys.exit()#exiting the program
     #end try -- except
@@ -44,7 +44,7 @@ def generate_requests (SERVER_ADDRESS, SERVER_PORT):#start  generate_requests
     data = data.decode()#decoding the data received
     print("{thread_name} Received from the Server: " + data + "\n"#printing the received data
             .format(thread_name = threading.current_thread().name)#getting the thread name
-    )
+        )
     data = "E"#character for closing the connection
     data = data.encode()#encoding the data
     sock_service.send(data)#sending the data
@@ -53,7 +53,7 @@ def generate_requests (SERVER_ADDRESS, SERVER_PORT):#start  generate_requests
     print("{thread_name} Execution time: {exe_time}"
             .format(thread_name = threading.current_thread().name,#getting the thread name
             exe_time = end_time_thread - start_time_thread)#calculating the execution time (end time - start time = execution time)
-    )
+        )
 #end generate_requests
 #code
 if __name__ == '__main__':#start if
@@ -66,5 +66,5 @@ if __name__ == '__main__':#start if
     print("{process_name} Execution time: {exe_time}"
             .format(process_name = multiprocessing.current_process().name,#getting the name of the process
             exe_time = end_time - start_time)#calculating the execution time = end_time - start_time
-    )
+        )
 #end if
