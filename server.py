@@ -15,7 +15,7 @@ print("Server in ascolto su %s." % str((SERVER_ADDRESS, SERVER_PORT)))
 while True:
     sock_service, addr_client = sock_listen.accept()
     print("\nConnection recieved from " + str(addr_client))
-    print("\nWaiting for recieving data ")
+    print("\nWaiting for receiving data ")
     contConn=0
     while True:
         dati = sock_service.recv(2048)
