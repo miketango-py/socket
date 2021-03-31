@@ -20,16 +20,28 @@ while True:
     while True:
         dati = sock_service.recv(2048)
         contConn+=1
+        
+        #if dati is empty
         if not dati:
             print("End data client. Reset")
             break
-        
+
+        #decoding the data received
         dati = dati.decode()
-        print("Ricieved: '%s'" % dati)
-        if dati=='0':
+        
+        #SYN case (0)
+        if dati == 'SYN':
+            print("Received: '%s'" % dati)
+            data = "SYN + ACK"
+
+        #ACK with Data case (2)
+        if dati == 'ACK with Data':
+            print("Received: '%s'" % dati)
+            data = "ACK for Data"
+
+        if dati=='-1':
             print("Closing the connection with " + str(addr_client))
             break
-        dati = "Answer to : " + str(addr_client) + ". The value of the counter is: " + str(contConn)
 
         dati = dati.encode()
 
